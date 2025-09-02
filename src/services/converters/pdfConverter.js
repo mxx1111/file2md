@@ -1,7 +1,11 @@
 import * as pdfjsLib from 'pdfjs-dist'
 
+// 使用本地worker文件，避免CDN加载问题
+// 注意：在Vite中需要使用?worker后缀来正确加载worker
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
+
 // 设置PDF.js Worker路径
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
 export class PdfConverter {
   static async convert(file) {
