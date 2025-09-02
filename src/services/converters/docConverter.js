@@ -24,7 +24,7 @@ export class DocConverter {
         ]
       }
       
-      const result = await mammoth.convertToHtml(arrayBuffer, options)
+      const result = await mammoth.convertToHtml({ arrayBuffer }, options)
       const markdown = this.htmlToMarkdown(result.value, file.name)
       
       return {
