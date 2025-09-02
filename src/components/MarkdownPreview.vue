@@ -373,7 +373,7 @@ const copyToClipboard = async (text) => {
   align-items: center;
   gap: 4px;
   padding: 4px 12px;
-  background: rgba(102, 126, 234, 0.08);
+  background: rgba(255, 154, 86, 0.08);
   border-radius: 20px;
   font-size: 12px;
   color: #606266;
@@ -414,13 +414,13 @@ const copyToClipboard = async (text) => {
 }
 
 .mode-btn:hover {
-  background: rgba(102, 126, 234, 0.08);
-  color: #667eea;
+  background: rgba(255, 154, 86, 0.08);
+  color: #ff9a56;
 }
 
 .mode-btn.active {
   background: white;
-  color: #667eea;
+  color: #ff9a56;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -434,7 +434,7 @@ const copyToClipboard = async (text) => {
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -447,7 +447,7 @@ const copyToClipboard = async (text) => {
 
 .export-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 154, 86, 0.4);
 }
 
 .dropdown-icon {
@@ -473,12 +473,12 @@ const copyToClipboard = async (text) => {
 }
 
 .preview-content::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   border-radius: 4px;
 }
 
 .preview-content::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5a6fd8 0%, #6b4398 100%);
+  background: linear-gradient(135deg, #ff8844 0%, #ff5555 100%);
 }
 
 .preview-only, .source-only {
@@ -536,8 +536,8 @@ const copyToClipboard = async (text) => {
 }
 
 .source-editor :deep(.el-textarea__inner):focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #ff9a56;
+  box-shadow: 0 0 0 3px rgba(255, 154, 86, 0.1);
 }
 
 /* Markdown 渲染样式 */
@@ -594,17 +594,17 @@ const copyToClipboard = async (text) => {
 }
 
 .markdown-body table th {
-  background: linear-gradient(135deg, #f8f9fb 0%, #f0f2ff 100%);
+  background: linear-gradient(135deg, #fff9f5 0%, #fff5f0 100%);
   font-weight: 600;
   color: #303133;
 }
 
 .markdown-body table tr:nth-child(even) {
-  background-color: #fafbfc;
+  background-color: #fffbf8;
 }
 
 .markdown-body table tr:hover {
-  background-color: #f0f2ff;
+  background-color: #fff5f0;
 }
 
 .markdown-body pre {
@@ -619,8 +619,8 @@ const copyToClipboard = async (text) => {
 }
 
 .markdown-body code {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  color: #667eea;
+  background: linear-gradient(135deg, rgba(255, 154, 86, 0.1), rgba(255, 107, 107, 0.1));
+  color: #ff7a45;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.9em;
@@ -634,10 +634,10 @@ const copyToClipboard = async (text) => {
 }
 
 .markdown-body blockquote {
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #ff9a56;
   padding: 12px 20px;
   margin: 16px 0;
-  background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(255, 154, 86, 0.05) 0%, transparent 100%);
   border-radius: 0 8px 8px 0;
   color: #4a5568;
   font-style: italic;
@@ -653,15 +653,15 @@ const copyToClipboard = async (text) => {
 }
 
 .markdown-body a {
-  color: #667eea;
+  color: #ff9a56;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
 .markdown-body a:hover {
-  color: #764ba2;
-  border-bottom-color: #764ba2;
+  color: #ff6b6b;
+  border-bottom-color: #ff6b6b;
 }
 
 .markdown-body img {

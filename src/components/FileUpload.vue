@@ -18,8 +18,8 @@
             <path d="M2 17L2 19C2 20.1046 2.89543 21 4 21L20 21C21.1046 21 22 20.1046 22 19L22 17" stroke="url(#upload-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <defs>
               <linearGradient id="upload-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                <stop offset="0%" style="stop-color:#ff9a56;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
               </linearGradient>
             </defs>
           </svg>
@@ -136,17 +136,17 @@ defineExpose({
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 154, 86, 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .upload-area :deep(.el-upload-dragger:hover) {
-  border-color: #667eea;
-  background: linear-gradient(145deg, #ffffff, #f0f2ff);
+  border-color: #ff9a56;
+  background: linear-gradient(145deg, #ffffff, #fff5f0);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 8px 25px rgba(255, 154, 86, 0.15);
 }
 
 .upload-area :deep(.el-upload-dragger:hover::before) {
@@ -154,8 +154,8 @@ defineExpose({
 }
 
 .upload-area :deep(.el-upload-dragger.is-dragover) {
-  border-color: #764ba2;
-  background: linear-gradient(145deg, #fef9ff, #f0f2ff);
+  border-color: #ff6b6b;
+  background: linear-gradient(145deg, #fff9f5, #fff5f0);
 }
 
 .upload-content {
@@ -196,7 +196,7 @@ defineExpose({
 }
 
 .click-text {
-  color: #667eea;
+  color: #ff9a56;
   font-weight: 500;
   cursor: pointer;
   border-bottom: 1px solid transparent;
@@ -204,8 +204,8 @@ defineExpose({
 }
 
 .click-text:hover {
-  color: #764ba2;
-  border-bottom-color: #764ba2;
+  color: #ff6b6b;
+  border-bottom-color: #ff6b6b;
 }
 
 .supported-formats {
@@ -218,17 +218,17 @@ defineExpose({
 
 .format-badge {
   padding: 4px 12px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, rgba(255, 154, 86, 0.1), rgba(255, 107, 107, 0.1));
+  border: 1px solid rgba(255, 154, 86, 0.2);
   border-radius: 20px;
   font-size: 12px;
-  color: #667eea;
+  color: #ff9a56;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .format-badge:hover {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #ff9a56, #ff6b6b);
   color: white;
   transform: scale(1.05);
 }
@@ -278,7 +278,7 @@ defineExpose({
 .file-item:hover {
   transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #667eea;
+  border-color: #ff9a56;
 }
 
 .file-item:last-child {

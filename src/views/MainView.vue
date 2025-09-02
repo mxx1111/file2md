@@ -101,8 +101,8 @@
                       <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="url(#gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
                       <defs>
                         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                          <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                          <stop offset="0%" style="stop-color:#ff9a56;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -395,7 +395,7 @@ const scrollToUpload = () => {
 /* 全局样式 */
 .main-view {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   position: relative;
   overflow-x: hidden;
 }
@@ -407,7 +407,7 @@ const scrollToUpload = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #fff5f0 0%, #ffe0d6 100%);
   opacity: 0.95;
   z-index: 0;
 }
@@ -440,7 +440,7 @@ const scrollToUpload = () => {
 .logo-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -458,7 +458,7 @@ const scrollToUpload = () => {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -476,7 +476,7 @@ const scrollToUpload = () => {
 }
 
 .version-badge {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   color: white;
   padding: 4px 12px;
   border-radius: 20px;
@@ -605,14 +605,14 @@ const scrollToUpload = () => {
   font-size: 16px;
   font-weight: 500;
   border-radius: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   border: none;
   transition: all 0.3s ease;
 }
 
 .convert-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(255, 154, 86, 0.4);
 }
 
 .btn-icon {
@@ -669,7 +669,7 @@ const scrollToUpload = () => {
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: #f8f9fb;
+  background: #fff5f0;
   border-radius: 20px;
   font-size: 14px;
   color: #606266;
@@ -720,11 +720,11 @@ const scrollToUpload = () => {
 }
 
 .custom-tab:hover {
-  background: #f0f2ff;
+  background: #fff5f0;
 }
 
 .custom-tab.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
   color: white;
 }
 
