@@ -1,0 +1,30 @@
+{
+  "name": "other2md",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "element-plus": "^2.11.1",
+    "file-saver": "^2.0.5",
+    "highlight.js": "^11.11.1",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.10.0",
+    "marked": "^16.2.1",
+    "pdfjs-dist": "^5.4.149",
+    "pinia": "^3.0.3",
+    "vite": "^7.1.4",
+    "vue": "^3.5.20",
+    "xlsx": "^0.18.5"
+  }
+}
