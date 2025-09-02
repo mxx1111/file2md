@@ -38,7 +38,7 @@
           <span class="format-badge">RTF</span>
           <span class="format-badge">PPT/PPTX</span>
         </div>
-        <p class="size-limit">单个文件最大 10MB</p>
+        <!-- <p class="size-limit">单个文件最大 10MB</p> -->
       </div>
     </el-upload>
   </div>
@@ -57,10 +57,11 @@ const fileList = ref([])
 const acceptedFormats = ref('.txt,.pdf,.doc,.docx,.xls,.xlsx,.csv,.tsv,.html,.htm,.rtf,.ppt,.pptx')
 
 const beforeUpload = (file) => {
-  if (!validateFileSize(file)) {
-    ElMessage.error('文件大小不能超过10MB')
-    return false
-  }
+  // 暂时移除文件大小限制
+  // if (!validateFileSize(file)) {
+  //   ElMessage.error('文件大小不能超过10MB')
+  //   return false
+  // }
   return true
 }
 
@@ -72,10 +73,11 @@ const handleFileChange = (file, files) => {
     return false
   }
   
-  if (!validateFileSize(file.raw)) {
-    ElMessage.error('文件大小不能超过10MB')
-    return false
-  }
+  // 暂时移除文件大小限制检查
+  // if (!validateFileSize(file.raw)) {
+  //   ElMessage.error('文件大小不能超过10MB')
+  //   return false
+  // }
   
   file.type = fileType
   fileList.value.push(file)

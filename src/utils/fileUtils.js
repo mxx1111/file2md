@@ -22,9 +22,11 @@ export const detectFileType = (file) => {
   return typeMap[extension] || 'unknown'
 }
 
-export const validateFileSize = (file, maxSize = 10) => {
-  const maxSizeBytes = maxSize * 1024 * 1024 // MB转字节
-  return file.size <= maxSizeBytes
+export const validateFileSize = (file, maxSize = Infinity) => {
+  // 暂时移除文件大小限制
+  return true
+  // const maxSizeBytes = maxSize * 1024 * 1024 // MB转字节
+  // return file.size <= maxSizeBytes
 }
 
 export const getSupportedFormats = () => [
