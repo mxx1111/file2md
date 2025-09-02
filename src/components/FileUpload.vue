@@ -33,6 +33,10 @@
           <span class="format-badge">PDF</span>
           <span class="format-badge">DOC/DOCX</span>
           <span class="format-badge">XLS/XLSX</span>
+          <span class="format-badge">CSV/TSV</span>
+          <span class="format-badge">HTML</span>
+          <span class="format-badge">RTF</span>
+          <span class="format-badge">PPT/PPTX</span>
         </div>
         <p class="size-limit">单个文件最大 10MB</p>
       </div>
@@ -50,7 +54,7 @@ const emit = defineEmits(['file-change'])
 
 const uploadRef = ref()
 const fileList = ref([])
-const acceptedFormats = ref('.txt,.pdf,.doc,.docx,.xls,.xlsx')
+const acceptedFormats = ref('.txt,.pdf,.doc,.docx,.xls,.xlsx,.csv,.tsv,.html,.htm,.rtf,.ppt,.pptx')
 
 const beforeUpload = (file) => {
   if (!validateFileSize(file)) {
@@ -90,7 +94,14 @@ const getFileTypeTag = (type) => {
     'doc': 'primary',
     'docx': 'primary',
     'xls': 'success',
-    'xlsx': 'success'
+    'xlsx': 'success',
+    'csv': 'success',
+    'tsv': 'success',
+    'html': 'danger',
+    'htm': 'danger',
+    'rtf': '',
+    'ppt': 'warning',
+    'pptx': 'warning'
   }
   return typeMap[type] || 'info'
 }

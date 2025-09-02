@@ -12,7 +12,11 @@ export const detectFileType = (file) => {
     'xlsx': 'xlsx',
     'ppt': 'ppt',
     'pptx': 'pptx',
-    'rtf': 'rtf'
+    'rtf': 'rtf',
+    'csv': 'csv',
+    'tsv': 'tsv',
+    'html': 'html',
+    'htm': 'htm'
   }
   
   return typeMap[extension] || 'unknown'
@@ -27,7 +31,11 @@ export const getSupportedFormats = () => [
   { type: 'txt', name: '文本文件', accept: '.txt' },
   { type: 'pdf', name: 'PDF文档', accept: '.pdf' },
   { type: 'doc', name: 'Word文档', accept: '.doc,.docx' },
-  { type: 'xls', name: 'Excel表格', accept: '.xls,.xlsx' }
+  { type: 'xls', name: 'Excel表格', accept: '.xls,.xlsx' },
+  { type: 'csv', name: 'CSV表格', accept: '.csv,.tsv' },
+  { type: 'html', name: 'HTML网页', accept: '.html,.htm' },
+  { type: 'rtf', name: '富文本格式', accept: '.rtf' },
+  { type: 'ppt', name: 'PowerPoint演示文稿', accept: '.ppt,.pptx' }
 ]
 
 export const getMimeType = (fileType) => {
@@ -37,7 +45,14 @@ export const getMimeType = (fileType) => {
     'doc': 'application/msword',
     'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     'xls': 'application/vnd.ms-excel',
-    'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'csv': 'text/csv',
+    'tsv': 'text/tab-separated-values',
+    'html': 'text/html',
+    'htm': 'text/html',
+    'rtf': 'application/rtf',
+    'ppt': 'application/vnd.ms-powerpoint',
+    'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
   }
   return mimeMap[fileType]
 }
