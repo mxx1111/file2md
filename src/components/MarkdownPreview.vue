@@ -1,50 +1,91 @@
 <template>
   <div class="markdown-preview-container">
     <div class="preview-header">
-      <el-row :gutter="20" align="middle">
-        <el-col :span="12">
-          <h3>{{ title || '预览' }}</h3>
-          <el-tag v-if="wordCount" size="small">{{ wordCount }} 字</el-tag>
-        </el-col>
-        <el-col :span="12" style="text-align: right">
-          <el-button-group>
-            <el-button 
-              :type="viewMode === 'preview' ? 'primary' : ''" 
-              @click="viewMode = 'preview'"
-              size="small"
-            >
-              预览
-            </el-button>
-            <el-button 
-              :type="viewMode === 'source' ? 'primary' : ''" 
-              @click="viewMode = 'source'"
-              size="small"
-            >
-              源码
-            </el-button>
-            <el-button 
-              :type="viewMode === 'split' ? 'primary' : ''" 
-              @click="viewMode = 'split'"
-              size="small"
-            >
-              对比
-            </el-button>
-          </el-button-group>
-          
-          <el-dropdown @command="handleExport" style="margin-left: 8px">
-            <el-button type="primary" size="small">
-              下载 <el-icon><arrow-down /></el-icon>
-            </el-button>
+      <div class="header-left">
+        <h3 class="preview-title">
+          <span class="title-icon">📝</span>
+          {{ title || '预览' }}
+        </h3>
+        <div class="preview-stats">
+          <span class="stat-item" v-if="wordCount">
+            <span class="stat-icon">📊</span>
+            {{ wordCount }} 字
+          </span>
+          <span class="stat-item">
+            <span class="stat-icon">⏱️</span>
+            {{ readingTime }} 分钟阅读
+          </span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="view-mode-switcher">
+          <button 
+            class="mode-btn" 
+            :class="{ active: viewMode === 'preview' }"
+            @click="viewMode = 'preview'"
+            title="预览模式"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 12S5 3 12 3s11 9 11 9-4 9-11 9S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>预览</span>
+          </button>
+          <button 
+            class="mode-btn" 
+            :class="{ active: viewMode === 'source' }"
+            @click="viewMode = 'source'"
+            title="源码模式"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>源码</span>
+          </button>
+          <button 
+            class="mode-btn" 
+            :class="{ active: viewMode === 'split' }"
+            @click="viewMode = 'split'"
+            title="对比模式"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>对比</span>
+          </button>
+        </div>
+        
+        <div class="export-dropdown">
+          <el-dropdown @command="handleExport" trigger="click">
+            <button class="export-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="7 10 12 15 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>导出</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item command="markdown">Markdown文件</el-dropdown-item>
-                <el-dropdown-item command="html">HTML文件</el-dropdown-item>
-                <el-dropdown-item command="copy">复制到剪贴板</el-dropdown-item>
+                <el-dropdown-item command="markdown">
+                  <span class="dropdown-icon">📝</span> Markdown 文件
+                </el-dropdown-item>
+                <el-dropdown-item command="html">
+                  <span class="dropdown-icon">🌐</span> HTML 文件
+                </el-dropdown-item>
+                <el-dropdown-item command="copy" divided>
+                  <span class="dropdown-icon">📋</span> 复制到剪贴板
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-        </el-col>
-      </el-row>
+        </div>
+      </div>
     </div>
     
     <div class="preview-content" :class="viewMode">
@@ -143,6 +184,11 @@ const renderedHtml = computed(() => {
 // 统计信息
 const wordCount = computed(() => {
   return localContent.value.replace(/[^\u4e00-\u9fa5\w]/g, '').length
+})
+
+// 阅读时间估算（假设每分钟阅读 300 字）
+const readingTime = computed(() => {
+  return Math.max(1, Math.ceil(wordCount.value / 300))
 })
 
 // 监听内容变化
@@ -272,32 +318,171 @@ const copyToClipboard = async (text) => {
 </script>
 
 <style scoped>
+/* 容器样式 */
 .markdown-preview-container {
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
+  border-radius: 16px;
   overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
+.markdown-preview-container:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* 头部样式 */
 .preview-header {
-  background: #f6f8fa;
-  padding: 12px 16px;
-  border-bottom: 1px solid #e1e4e8;
+  background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
+  padding: 20px 24px;
+  border-bottom: 1px solid #e4e7ed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.preview-header h3 {
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.preview-title {
   margin: 0;
-  display: inline-block;
-  margin-right: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #303133;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.title-icon {
+  font-size: 20px;
+}
+
+.preview-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(102, 126, 234, 0.08);
+  border-radius: 20px;
+  font-size: 12px;
+  color: #606266;
+}
+
+.stat-icon {
+  font-size: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 视图模式切换器 */
+.view-mode-switcher {
+  display: flex;
+  background: #f4f4f5;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #606266;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.mode-btn:hover {
+  background: rgba(102, 126, 234, 0.08);
+  color: #667eea;
+}
+
+.mode-btn.active {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mode-btn span {
+  font-weight: 500;
+}
+
+/* 导出按钮 */
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.export-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+/* 内容区域 */
 .preview-content {
   min-height: 400px;
-  max-height: 600px;
+  max-height: 70vh;
   overflow-y: auto;
+  background: white;
+}
+
+.preview-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.preview-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+.preview-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6b4398 100%);
 }
 
 .preview-only, .source-only {
-  padding: 16px;
+  padding: 24px;
 }
 
 .split-view {
@@ -307,93 +492,237 @@ const copyToClipboard = async (text) => {
 
 .split-left, .split-right {
   flex: 1;
-  padding: 16px;
+  padding: 24px;
   overflow-y: auto;
 }
 
 .split-left {
-  border-right: 1px solid #e1e4e8;
+  border-right: 1px solid #e4e7ed;
+  background: #fafbfc;
+}
+
+.split-right {
+  background: white;
 }
 
 .split-left h4, .split-right h4 {
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
   font-size: 14px;
+  font-weight: 600;
   color: #606266;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.split-left h4::before {
+  content: '📝';
+}
+
+.split-right h4::before {
+  content: '👁️';
+}
+
+/* 源码编辑器 */
 .source-editor :deep(.el-textarea__inner) {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.markdown-body {
+  font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   font-size: 14px;
   line-height: 1.6;
+  background: #fafbfc;
+  border: 1px solid #e4e7ed;
+  border-radius: 8px;
+  padding: 16px;
+  color: #303133;
+}
+
+.source-editor :deep(.el-textarea__inner):focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Markdown 渲染样式 */
+.markdown-body {
+  font-size: 15px;
+  line-height: 1.7;
   color: #24292e;
+  word-wrap: break-word;
 }
 
 .markdown-body h1 {
   font-size: 2em;
-  border-bottom: 1px solid #eaecef;
+  font-weight: 600;
+  margin: 24px 0 16px;
   padding-bottom: 0.3em;
+  border-bottom: 2px solid #e4e7ed;
+  color: #1a202c;
 }
 
 .markdown-body h2 {
   font-size: 1.5em;
-  border-bottom: 1px solid #eaecef;
+  font-weight: 600;
+  margin: 20px 0 12px;
   padding-bottom: 0.3em;
+  border-bottom: 1px solid #e4e7ed;
+  color: #2d3748;
 }
 
 .markdown-body h3 {
   font-size: 1.25em;
+  font-weight: 600;
+  margin: 16px 0 8px;
+  color: #4a5568;
+}
+
+.markdown-body p {
+  margin: 0 0 16px;
 }
 
 .markdown-body table {
   border-collapse: collapse;
   width: 100%;
   margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .markdown-body table th,
 .markdown-body table td {
-  border: 1px solid #dfe2e5;
-  padding: 6px 13px;
+  border: 1px solid #e4e7ed;
+  padding: 12px;
+  text-align: left;
 }
 
 .markdown-body table th {
-  background-color: #f6f8fa;
+  background: linear-gradient(135deg, #f8f9fb 0%, #f0f2ff 100%);
   font-weight: 600;
+  color: #303133;
 }
 
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
+.markdown-body table tr:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+.markdown-body table tr:hover {
+  background-color: #f0f2ff;
 }
 
 .markdown-body pre {
-  background-color: #f6f8fa;
-  padding: 16px;
-  border-radius: 6px;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 12px;
   overflow: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .markdown-body code {
-  background-color: rgba(27, 31, 35, 0.05);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-size: 85%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  color: #667eea;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'JetBrains Mono', 'Monaco', monospace;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
 }
 
 .markdown-body blockquote {
-  border-left: 4px solid #dfe2e5;
-  padding: 0 1em;
-  color: #6a737d;
-  margin: 0;
+  border-left: 4px solid #667eea;
+  padding: 12px 20px;
+  margin: 16px 0;
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+  border-radius: 0 8px 8px 0;
+  color: #4a5568;
+  font-style: italic;
 }
 
+.markdown-body ul, .markdown-body ol {
+  padding-left: 24px;
+  margin: 16px 0;
+}
+
+.markdown-body li {
+  margin: 8px 0;
+}
+
+.markdown-body a {
+  color: #667eea;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.markdown-body a:hover {
+  color: #764ba2;
+  border-bottom-color: #764ba2;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+}
+
+.markdown-body hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e4e7ed, transparent);
+  margin: 24px 0;
+}
+
+/* 错误提示 */
 .error {
   color: #f56c6c;
-  padding: 16px;
+  padding: 20px;
   text-align: center;
+  background: #fef0f0;
+  border-radius: 8px;
+  margin: 16px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .preview-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .header-right {
+    justify-content: space-between;
+  }
+  
+  .view-mode-switcher {
+    flex: 1;
+  }
+  
+  .mode-btn span {
+    display: none;
+  }
+  
+  .split-view {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .split-left {
+    border-right: none;
+    border-bottom: 1px solid #e4e7ed;
+  }
 }
 </style>
