@@ -4,8 +4,8 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue()],
-  // 设置基础路径为相对路径，这样可以部署到任何子目录
-  base: './',
+  // 设置基础路径，开发环境使用'/'，生产环境使用'./'
+  base: process.env.NODE_ENV === 'production' ? './' : '/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
