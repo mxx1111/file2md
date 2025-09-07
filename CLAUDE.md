@@ -137,3 +137,65 @@ To test the application:
 - Add progress indicators for large file processing
 - Support for batch file uploads with ZIP export
 - Add configuration options for conversion parameters
+
+## Git 操作指南
+
+### 推送到 GitHub 仓库的常见问题和解决方案
+
+在将项目推送到 GitHub 时可能遇到的问题及解决方法：
+
+#### 问题1: HTTP/HTTPS 连接失败
+**现象**: 
+```bash
+fatal: unable to access 'https://github.com/username/repo.git/': Error in the HTTP2 framing layer
+# 或
+fatal: Failed to connect to github.com port 443 after timeout: Couldn't connect to server
+```
+
+**解决方案**:
+1. 使用 SSH 替代 HTTPS 协议
+```bash
+# 修改远程仓库地址为 SSH 格式
+git remote set-url origin git@github.com:username/repo.git
+# 或添加新的远程仓库
+git remote add github git@github.com:username/repo.git
+```
+
+2. 确保 SSH 密钥已配置
+```bash
+# 检查 SSH 密钥
+ssh -T git@github.com
+# 如果没有配置，需要生成并添加 SSH 密钥到 GitHub
+```
+
+#### 问题2: 多个远程仓库管理
+**场景**: 项目同时需要推送到多个 Git 平台（如 GitHub、Gitee）
+
+**操作步骤**:
+```bash
+# 查看当前远程仓库
+git remote -v
+
+# 添加额外的远程仓库
+git remote add github git@github.com:username/repo.git
+git remote add gitee git@gitee.com:username/repo.git
+
+# 推送到指定远程仓库
+git push github main
+git push gitee main
+
+# 设置默认上游分支
+git push -u github main
+```
+
+#### 最佳实践
+1. **优先使用 SSH**: 避免 HTTPS 连接问题，更安全便捷
+2. **检查网络状况**: 某些网络环境可能需要代理或VPN
+3. **多远程仓库命名**: 使用有意义的远程仓库名称（如 github, gitee, origin）
+4. **定期同步**: 保持多个远程仓库的代码同步
+
+#### 项目仓库信息
+- **GitHub 仓库**: https://github.com/mxx1111/file2md.git
+- **本地远程配置**:
+  - `origin`: gitee.com（原始仓库）
+  - `github`: github.com（新增仓库）
