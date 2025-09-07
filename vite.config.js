@@ -19,7 +19,9 @@ export default defineConfig({
       'marked',
       'highlight.js',
       'file-saver'
-    ]
+    ],
+    // 排除pdfjs-dist的worker文件，避免被优化
+    exclude: ['pdfjs-dist/build/pdf.worker.min.mjs']
   },
   build: {
     // 增加兼容性配置

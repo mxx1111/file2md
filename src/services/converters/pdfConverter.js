@@ -1,7 +1,9 @@
 import * as pdfjsLib from 'pdfjs-dist'
 
-// 使用本地public目录中的worker文件
-pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.min.js'
+// 动态设置worker路径，适应开发和生产环境
+const isProduction = import.meta.env.PROD
+const baseUrl = isProduction ? import.meta.env.BASE_URL || './' : '/'
+pdfjsLib.GlobalWorkerOptions.workerSrc = `${baseUrl}pdf.worker.min.js`
 
 export class PdfConverter {
   static async convert(file) {
