@@ -70,7 +70,7 @@ src/
 
 ### 环境要求
 
-- Node.js >= 16.0
+- Node.js >= 20.19
 - npm >= 8.0
 
 ### 安装运行
@@ -81,7 +81,7 @@ git clone https://github.com/mxx1111/file2md.git
 cd file2md
 
 # 安装依赖
-npm install
+npm ci
 
 # 启动开发服务器
 npm run dev
