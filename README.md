@@ -5,6 +5,8 @@
 [![Build](https://github.com/mxx1111/file2md/actions/workflows/ci.yml/badge.svg)](https://github.com/mxx1111/file2md/actions/workflows/ci.yml)
 [![License: Mulan PSL v2](https://img.shields.io/badge/license-Mulan%20PSL%20v2-blue.svg)](LICENSE)
 
+**[在线体验](https://mxx1111.github.io/file2md/)** · 文件只在浏览器本地处理，不会上传到服务器。
+
 ## 🚀 功能特性
 
 ### 支持的文件格式
