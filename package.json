@@ -1,5 +1,5 @@
 {
-  "name": "other2md",
+  "name": "file2md",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,21 @@
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "markdown",
+    "converter",
+    "pdf",
+    "docx",
+    "xlsx",
+    "vue"
+  ],
+  "author": "mxx1111",
+  "license": "MulanPSL-2.0",
+  "description": "A privacy-first browser tool that converts common document formats to Markdown.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mxx1111/file2md.git"
+  },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "@vitejs/plugin-vue": "^6.0.1",

@@ -2,6 +2,9 @@
 
 一个基于 Vue 3 的纯前端文件转 Markdown 转换器，支持多种常见文档格式的在线转换。
 
+[![Build](https://github.com/mxx1111/file2md/actions/workflows/ci.yml/badge.svg)](https://github.com/mxx1111/file2md/actions/workflows/ci.yml)
+[![License: Mulan PSL v2](https://img.shields.io/badge/license-Mulan%20PSL%20v2-blue.svg)](LICENSE)
+
 ## 🚀 功能特性
 
 ### 支持的文件格式
@@ -137,6 +140,10 @@ export const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
 - **无数据上传** - 文件不会上传到任何服务器
 - **本地处理** - 保证数据完全的隐私安全
 
+> 安全提示：请只打开来源可信的文档。当前 XLS/XLSX 转换依赖 npm 上的
+> `xlsx@0.18.5`，其已披露的安全问题暂无可用的 npm 修复版本；项目会持续评估
+> 替代解析器。在完成替换前，不建议处理来源不明的 Excel 文件。
+
 ## 📋 常见问题
 
 **Q: PDF 转换后内容不完整？**
@@ -153,7 +160,7 @@ A: 建议使用文件大小在 10MB 以内，避免同时转换过多文件。
 
 ## 📄 开源协议
 
-本项目采用 MIT 协议开源 - 查看 [LICENSE](LICENSE) 了解详情。
+本项目采用木兰宽松许可证第 2 版（Mulan PSL v2）开源，详见 [LICENSE](LICENSE)。
 
 ## 🙏 致谢
 
